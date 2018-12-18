@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class helloWorld {
 
 	public static void main(String[] args) {
-	String string1 = "Chris";
+	String string1 = "Sujan";
     System.out.println("Hi, my name is " + string1);
     Scanner sc = new Scanner(System.in);
     System.out.println("what's your name?");
