@@ -17,9 +17,31 @@ public class Calculator {
 		int secondNumber = input.nextInt();
 		
 		System.out.println("Insert Operator (+,-,/,*)");
-		int operator = input.nextChar();	
+		char operator = input.next().charAt(0);	
 		
+		switch (operator) {
+		case '+':
+			System.out.println(add(firstNumber, secondNumber));
+			break;
+		case '-':
+			System.out.println(subtract(firstNumber, secondNumber));
+			break;
+		case '/':
+			System.out.println(divide(firstNumber, secondNumber));
+			break;
+		case '*':
+			System.out.println(subtract(firstNumber, secondNumber));
+			break;
+		case '%':
+			System.out.println(modulus(firstNumber, secondNumber));
+			break;
+			
+		default:
+			System.out.println("Invalid operator");
+			break;
+		}
 		
+		input.close();	
 		
 	}
 	
@@ -29,7 +51,7 @@ public class Calculator {
 	 * @param secondNumber Second number to add
 	 * @return sum Sum of two numbers
 	 */
-	public int add(int firstNumber, int secondNumber) {
+	public static int add(int firstNumber, int secondNumber) {
 		int sum = firstNumber + secondNumber;
 		return sum;
 	}
@@ -39,7 +61,7 @@ public class Calculator {
 	 * @param secondNumber Second number to subtract to
 	 * @return difference Difference between number and two
 	 */
-	public int subtract(int firstNumber, int secondNumber) {
+	public static int subtract(int firstNumber, int secondNumber) {
 		int difference = firstNumber - secondNumber;
 		return difference;
 	}
@@ -49,7 +71,7 @@ public class Calculator {
 	 * @param secondNumber Second number to multiply
 	 * @return multipliedNumber Multiplied first and second number
 	 */
-	public int multiply(int firstNumber, int secondNumber) {
+	public static int multiply(int firstNumber, int secondNumber) {
 		int multipliedNumber = firstNumber * secondNumber;
 		return multipliedNumber;
 	}
@@ -59,7 +81,7 @@ public class Calculator {
 	 * @param secondNumber
 	 * @return
 	 */
-	public int divide(int firstNumber, int secondNumber) {
+	public static int divide(int firstNumber, int secondNumber) {
 		int dividedNumber = firstNumber / secondNumber;
 		return dividedNumber;
 	}
@@ -69,7 +91,7 @@ public class Calculator {
 	 * @param secondNumber
 	 * @return
 	 */
-	public int modulus(int firstNumber, int secondNumber) {
+	public static int modulus(int firstNumber, int secondNumber) {
 		int modulo = firstNumber % secondNumber;
 		return modulo;
 	}
