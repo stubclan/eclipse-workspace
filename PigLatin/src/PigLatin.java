@@ -1,46 +1,65 @@
 import java.util.Scanner;
 
 public class PigLatin {
-	
+
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		
-		System.out.println("Input an English word");
-		String input = in.next();
-		
-		System.out.println(translateToPigLatin(input));
-		
+
+		System.out.println("Input an English Sentence");
+		String word = in.next();
+
+		System.out.println(translateToPigLatin(word));
 		in.close();
-		
+
 	}
-	
-	public static String translateToPigLatin(String input) {
-		
-		CharSequence vowel = "a, e, i, o, u";
-		
-		char firstChar = input.charAt(0);
-		if (checkIfVowel(Character.toLowerCase(firstChar))) {
-			return (input + "yay");
+
+	public static String translateToPigLatin(String word) {
+
+		char firstChar = Character.toLowerCase(word.charAt(0));
+		if (checkIfVowel(firstChar)) {
+			return (word + "yay");
+		} else if (!checkIfVowel(firstChar) && getIndexOfFirstVowel(word) != -1) {
+			int vowelIndex = getIndexOfFirstVowel(word);
+			return (word.substring(vowelIndex, word.length()) + word.substring(0, vowelIndex) + "ay");
+		} else {
+			return (word + "ay");
 		}
-		else if (!checkIfVowel(Character.toLowerCase(firstChar))) {
-			int vowelIndex = getIndexOfVowel(input);
-			System.out.println(vowelIndex);
-			return (input.substring(vowelIndex, input.length()) + input.substring(0, vowelIndex));
-		}
-		else {
-			return (input + "ay");
-		}
-		
+
 	}
-	
-	public static int getIndexOfVowel(String input) {
-		String vowels = "a, e, i, o, u";
-		
-		char[] vowelArray = vowels.toCharArray();
-		for (char vowel: vowelArray) {
-			return input.indexOf(vowel);
+
+	public static int getIndexOfFirstVowel(String input) {
+
+		int[] indexArray = new int[45]; // Fact: The biggest word in English language is 45 characters long.
+		int count = 0;
+
+		for (int i = 0; i < indexArray.length; i++) {
+			indexArray[i] = Integer.MAX_VALUE;
 		}
-		return 0;
+
+		for (char single : input.toLowerCase().toCharArray()) {
+			if (single == 'a' || single == 'e' || single == 'i' || single == 'o' || single == 'u') {
+				indexArray[count] = input.indexOf(single);
+				count++;
+			}
+
+		}
+
+		return getSmallestIndex(indexArray);
+	}
+
+	public static int getSmallestIndex(int[] indexArray) {
+		if (indexArray.length == 0)
+			return -1;
+		int smallest = indexArray[0];
+		int index = 0;
+		for (int i = 0; i < indexArray.length; i++) {
+			if (indexArray[i] < smallest) {
+				smallest = indexArray[i];
+				index = i;
+			}
+		}
+
+		return smallest;
 	}
 
 	public static boolean checkIfVowel(char firstChar) {
