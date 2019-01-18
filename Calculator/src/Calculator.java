@@ -30,7 +30,7 @@ public class Calculator {
 			System.out.println(divide(firstNumber, secondNumber));
 			break;
 		case '*':
-			System.out.println(subtract(firstNumber, secondNumber));
+			System.out.println(multiply(firstNumber, secondNumber));
 			break;
 		case '%':
 			System.out.println(modulus(firstNumber, secondNumber));
