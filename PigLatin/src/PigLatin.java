@@ -18,7 +18,7 @@ public class PigLatin {
 		char firstChar = Character.toLowerCase(word.charAt(0));
 		if (checkIfVowel(firstChar)) {
 			return (word + "yay");
-		} else if (!checkIfVowel(firstChar) && getIndexOfFirstVowel(word) != -1) {
+		} else if ((!checkIfVowel(word.toCharArray())) && (getIndexOfFirstVowel(word) != -1)) {
 			int vowelIndex = getIndexOfFirstVowel(word);
 			return (word.substring(vowelIndex, word.length()) + word.substring(0, vowelIndex) + "ay");
 		} else {
@@ -67,6 +67,18 @@ public class PigLatin {
 			return true;
 		}
 		return false;
+	}
+	
+	public static boolean checkIfVowel(char[] charArray) {
+		
+		for (char firstChar: charArray) {
+			if (firstChar == 'a' || firstChar == 'e' || firstChar == 'i' || firstChar == 'o' || firstChar == 'u') {
+				return true;
+			}
+			
+		}
+		return false;
+		
 	}
 
 }
