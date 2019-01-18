@@ -1,25 +1,25 @@
 import java.util.Scanner;
 
 public class Statistics {
-	
+
 	private static int min;
 	private static int max;
 	private static int average;
 	private static int sum;
 	private static int numberOfElements;
-	
+
 	private static int[] numbers;
-	
+
 	public static void main(String[] args) {
-		
-		//initialization 
+
+		// initialization
 		min = 0;
 		max = 0;
 		sum = 0;
 		numberOfElements = 0;
-		
+
 		average = 0;
-		
+
 		if (getInput()) {
 			System.out.println("The minimum of all numbers is: " + getMin());
 			System.out.println("The maximum of all numbers is: " + getMax());
@@ -27,44 +27,42 @@ public class Statistics {
 			System.out.println("The total number of elements is: " + getNumberOfElements());
 			System.out.println("The average of all numbers is: " + getAverage());
 		}
-		
+
 	}
-	
+
 	public static boolean getInput() {
 		Scanner in = new Scanner(System.in);
 
 		System.out.println("Input your number/s(only positive integers, comma for multiple)");
-		
+
 		String inputNumbers = in.nextLine();
-		if (!(inputNumbers.equals("")) && !(inputNumbers.equals(null)))  {
+		if (!(inputNumbers.equals("")) && !(inputNumbers.equals(null))) {
 			String[] inputSplitArray = inputNumbers.split(",");
-			
+
 			numbers = new int[inputSplitArray.length];
-			
-			for(int i = 0; i < inputSplitArray.length; i++) {
-				 numbers[i] = Integer.parseInt(inputSplitArray[i]);
-			}		
+
+			for (int i = 0; i < inputSplitArray.length; i++) {
+				numbers[i] = Integer.parseInt(inputSplitArray[i]);
+			}
 			return true;
-		}		
-		return false;		
+		}
+		return false;
 	}
 
 	public static int getMin() {
 		if (getNumberOfElements() == 0) {
 			min = 0;
-		}
-		else if (getNumberOfElements() == 1) {
+		} else if (getNumberOfElements() == 1) {
 			min = numbers[0];
-		}
-		else {
+		} else {
 			min = numbers[0];
-			for (int number: numbers) {
+			for (int number : numbers) {
 				if (number < min) {
 					min = number;
 				}
 			}
 		}
-		
+
 		return min;
 	}
 
@@ -72,31 +70,29 @@ public class Statistics {
 
 		if (getNumberOfElements() == 0) {
 			max = 0;
-		}
-		else if (getNumberOfElements() == 1) {
+		} else if (getNumberOfElements() == 1) {
 			max = numbers[0];
-		}
-		else {
+		} else {
 			max = Integer.MIN_VALUE;
-			for (int number: numbers) {
+			for (int number : numbers) {
 				if (number > max) {
 					max = number;
 				}
 			}
 		}
-		
+
 		return max;
 	}
 
 	public static int getAverage() {
-		
+
 		average = getSum() / getNumberOfElements();
-		
+
 		return average;
 	}
 
 	public static int getSum() {
-		for (int number: numbers) {
+		for (int number : numbers) {
 			sum += number;
 		}
 		return sum;
@@ -110,7 +106,5 @@ public class Statistics {
 	public static int[] getNumbers() {
 		return numbers;
 	}
-	
-	
 
 }

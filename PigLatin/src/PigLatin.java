@@ -16,9 +16,10 @@ public class PigLatin {
 	public static String translateToPigLatin(String word) {
 
 		char firstChar = Character.toLowerCase(word.charAt(0));
+
 		if (checkIfVowel(firstChar)) {
 			return (word + "yay");
-		} else if ((!checkIfVowel(word.toCharArray())) && (getIndexOfFirstVowel(word) != -1)) {
+		} else if (!(checkIfVowel(firstChar)) && checkIfStringHasVowel(word.toCharArray())) {
 			int vowelIndex = getIndexOfFirstVowel(word);
 			return (word.substring(vowelIndex, word.length()) + word.substring(0, vowelIndex) + "ay");
 		} else {
@@ -68,17 +69,19 @@ public class PigLatin {
 		}
 		return false;
 	}
-	
-	public static boolean checkIfVowel(char[] charArray) {
-		
-		for (char firstChar: charArray) {
-			if (firstChar == 'a' || firstChar == 'e' || firstChar == 'i' || firstChar == 'o' || firstChar == 'u') {
+
+	public static boolean checkIfStringHasVowel(char[] charArray) {
+
+		for (char firstChar : charArray) {
+			if (firstChar == 'a' || firstChar == 'e' || firstChar == 'i' || firstChar == 'o' || firstChar == 'u'
+					|| firstChar == 'A' || firstChar == 'E' || firstChar == 'I' || firstChar == 'O'
+					|| firstChar == 'U') {
 				return true;
 			}
-			
+
 		}
 		return false;
-		
+
 	}
 
 }
