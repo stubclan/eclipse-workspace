@@ -15,11 +15,14 @@ public class RockPaperScissors {
 		
 		String winner = getWinner(input.toUpperCase(), aiInput.toUpperCase());
 		
+		System.out.println(winner + " " + input + " " + aiInput);
+		System.out.println();
+		
 		if (winner.equals(input.toUpperCase())) {
 			System.out.println("You win!");
 		}
 		else if (winner.equals(aiInput.toUpperCase())){
-			System.out.println("I win");
+			System.out.println("I win!");
 		}
 		else {
 			System.out.println("No one wins!");
@@ -27,13 +30,13 @@ public class RockPaperScissors {
 	}
 
 	public static String getWinner(String input, String aiInput) {
-		if (input.equals("ROCK") || aiInput.equals("ROCK") && input.equals("PAPER") || aiInput.equals("PAPER")) {
+		if ((input.equals("ROCK") || aiInput.equals("ROCK")) && (input.equals("PAPER") || aiInput.equals("PAPER"))) {
 			return "PAPER";
 		}
-		else if (input.equals("ROCK") || aiInput.equals("ROCK") && input.equals("SCISSORS") || aiInput.equals("SCISSORS")) {
+		else if ((input.equals("ROCK") || aiInput.equals("ROCK")) && (input.equals("SCISSORS") || aiInput.equals("SCISSORS"))) {
 			return "ROCK";
 		}
-		else if (input.equals("PAPER") || aiInput.equals("PAPER") && input.equals("SCISSORS") || aiInput.equals("SCISSORS")) {
+		else if ((input.equals("PAPER") || aiInput.equals("PAPER")) && (input.equals("SCISSORS") || aiInput.equals("SCISSORS"))) {
 			return "SCISSORS";
 		}
 		else {
