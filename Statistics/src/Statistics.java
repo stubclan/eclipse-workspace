@@ -4,7 +4,7 @@ public class Statistics {
 
 	private static int min;
 	private static int max;
-	private static int average;
+	private static double average;
 	private static int sum;
 	private static int numberOfElements;
 
@@ -84,7 +84,7 @@ public class Statistics {
 		return max;
 	}
 
-	public static int getAverage() {
+	public static double getAverage() {
 
 		average = getSum() / getNumberOfElements();
 
