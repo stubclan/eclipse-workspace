@@ -30,7 +30,7 @@ public class PigLatin {
 
 	public static int getIndexOfFirstVowel(String input) {
 
-		int[] indexArray = new int[45]; // Fact: The biggest word in English language is 45 characters long.
+		int[] indexArray = new int[45]; // Fact: The longest word in English language is 45 characters long.
 		int count = 0;
 
 		for (int i = 0; i < indexArray.length; i++) {

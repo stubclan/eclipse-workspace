@@ -21,6 +21,7 @@ public class Statistics {
 		average = 0;
 
 		if (getInput()) {
+			calculateSum();
 			System.out.println("The minimum of all numbers is: " + getMin());
 			System.out.println("The maximum of all numbers is: " + getMax());
 			System.out.println("The sum of all numbers is: " + getSum());
@@ -85,16 +86,19 @@ public class Statistics {
 	}
 
 	public static double getAverage() {
-
-		average = getSum() / getNumberOfElements();
+		
+		average = sum / getNumberOfElements();
 
 		return average;
 	}
 
-	public static int getSum() {
+	public static void calculateSum() {
 		for (int number : numbers) {
 			sum += number;
 		}
+	}
+	
+	public static int getSum() {
 		return sum;
 	}
 
