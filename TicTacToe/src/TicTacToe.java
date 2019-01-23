@@ -77,15 +77,13 @@ public class TicTacToe {
 		if (!isFinished()) {
 			System.out.println("Player 1's(X) move.");
 			System.out.println("Please enter row (0-2)");
-			int row = in.nextInt();
+			int xRow = in.nextInt();
 			System.out.println("Please enter column(0,2)1");
-			int column = in.nextInt();
-			processMove(PLAYER_ONE_TILE, row, column);
+			int xColumn = in.nextInt();
+			processMove(PLAYER_ONE_TILE, xRow, xColumn);
 
 			printBoard();
-		}
-
-		if (!isFinished()) {
+		
 			System.out.println("Player 2's(O) move");
 			System.out.println("Please enter row");
 			int row = in.nextInt();
@@ -95,7 +93,6 @@ public class TicTacToe {
 
 			printBoard();
 		}
-		in.close();
 	}
 
 	// Private method to put 'X' or 'O'
