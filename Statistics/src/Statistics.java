@@ -87,7 +87,7 @@ public class Statistics {
 
 	public static double getAverage() {
 		
-		average = sum / getNumberOfElements();
+		average = (double)sum / getNumberOfElements();
 
 		return average;
 	}
