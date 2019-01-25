@@ -27,24 +27,29 @@ public class TicTacToe {
 
 		board = new char[ROWS][COLUMNS];
 		initBoard();
+		System.err.println("This game doesn't check if moves are invalid or if you enter same row and column twice.");
 		printBoard();
 
 		while (!isFinished()) {
 			move();
 		}
-
-		printResult();
+		
+		if (isFinished()) {
+			printResult();
+		}
 
 	}
 
 	public static void printResult() {
-		if (isWinner(board, PLAYER_ONE_TILE)) {
-			System.out.println("Player One(X) Wins");
-		} else if (isWinner(board, PLAYER_TWO_TILE)) {
-			System.out.println("Player Two(Y) Wins");
-		} else {
-			System.out.println("Game of Draw");
-		}		
+		if (getGameState(board) == PLAYER_ONE_WINS) {
+			System.out.println("Player One(" + PLAYER_ONE_TILE + ") wins!");
+		}
+		else if (getGameState(board) == PLAYER_TWO_WINS) {
+			System.out.println("Player Two(" + PLAYER_TWO_TILE + ") wins!");
+		}
+		else if (getGameState(board) == DRAW) {
+			System.out.println("Game was draw!");
+		}
 	}
 
 	public static void initBoard() {
@@ -81,26 +86,31 @@ public class TicTacToe {
 			System.out.println("Please enter column(0,2)1");
 			int xColumn = in.nextInt();
 			processMove(PLAYER_ONE_TILE, xRow, xColumn);
-
+			
 			printBoard();
+		}
+		if (!isFinished()) {
 		
 			System.out.println("Player 2's(O) move");
 			System.out.println("Please enter row");
 			int row = in.nextInt();
 			System.out.println("Please enter column");
 			int column = in.nextInt();
-			processMove(PLAYER_TWO_TILE, row, column);
+			processMove(PLAYER_TWO_TILE, row, column);		
 
 			printBoard();
+		
 		}
 	}
 
 	// Private method to put 'X' or 'O'
-	private static void processMove(char mark, int row, int column) {
+	private static boolean processMove(char mark, int row, int column) {
 
 		if (board[row][column] == UNINITIALIZED_TILE) {
 			board[row][column] = mark;
+			return true;
 		}
+		return false;
 	}
 
 	public static boolean isFinished() {
