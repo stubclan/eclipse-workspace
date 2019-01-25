@@ -3,9 +3,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RockPaperScissorsException {
-
+		
 
 	public static void main(String[] args) {
+		
 
 		Scanner in = new Scanner(System.in);
 		
@@ -19,7 +20,7 @@ public class RockPaperScissorsException {
 				checkUserInput(input);
 				shouldContinue = false; // User has entered valid input, tell the while loop to exit
 			} catch (Exception e) { 
-				System.out.println("Please enter either 'Rock' or 'Paper' or 'Scissors'");
+				System.err.println(e.getMessage());
 			}
 		}
 
