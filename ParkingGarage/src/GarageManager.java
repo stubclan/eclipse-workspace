@@ -8,16 +8,27 @@ public class GarageManager {
 		Car secondCar = new Car("BMW", "Altima", "Black", "JHS");
 		Car thirdCar = new Car("VW", "Altima", "White", "JHS");
 		
-		garage.park(firstCar, 1);
-		garage.park(secondCar, 2);
-		garage.park(thirdCar, 3);
+		garage.park(firstCar, 0);
+		garage.park(secondCar, 1);
+		garage.park(thirdCar, 2);
 		
 		garage.printInventory();
+		
+		System.out.println("*******************************************");
 		
 		garage.vacate(1);
-		garage.vacate(3);
+		garage.vacate(2);
+				
+		garage.printInventory();
+		
+		System.out.println("******************************************** After removing adding cars back");
+		
+		garage.park(secondCar, 1);
+		garage.park(thirdCar, 2);
 		
 		garage.printInventory();
+		
+		System.out.println("*******************************************");
 		
 	}
 }
