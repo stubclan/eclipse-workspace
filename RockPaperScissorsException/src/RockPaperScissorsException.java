@@ -1,23 +1,39 @@
+
 import java.util.Random;
 import java.util.Scanner;
 
-public class RockPaperScissors {
-	
+public class RockPaperScissorsException {
+		
+
 	public static void main(String[] args) {
+		
+
 		Scanner in = new Scanner(System.in);
 		
-		System.out.println("Enter Rock/Paper/Scissors");
-		String input = in.next();
-		
+		String input = "";
+
+		boolean shouldContinue = true;
+		while (shouldContinue) {
+			try {
+				System.out.println("Enter Rock/Paper/Scissors");
+				input = in.next();
+				checkUserInput(input);
+				shouldContinue = false; // User has entered valid input, tell the while loop to exit
+			} catch (Exception e) { 
+				System.err.println(e.getMessage());
+			}
+		}
+
+
 		String aiInput = getAiInput();
-		
+
 		System.out.println("You chose " + input + "| I chose " + aiInput);
-		
+
 		String winner = getWinner(input.toUpperCase(), aiInput.toUpperCase());
-		
+
 		System.out.println(winner + " " + input + " " + aiInput);
 		System.out.println();
-		
+
 		if (winner.equals(input.toUpperCase())) {
 			System.out.println("You win!");
 		}
@@ -26,6 +42,13 @@ public class RockPaperScissors {
 		}
 		else {
 			System.out.println("No one wins!");
+		}
+	}
+
+	public static void checkUserInput(String input) {
+
+		if (!(input.toUpperCase().equals("ROCK") || input.toUpperCase().equals("PAPER") || input.toUpperCase().equals("SCISSORS"))) {
+			throw new IllegalArgumentException("Please enter either ROCK or PAPER or SCISSORS only.");
 		}
 	}
 
@@ -48,12 +71,13 @@ public class RockPaperScissors {
 	public static String getAiInput() {
 		String[] gameChoices = {"ROCK", "PAPER", "SCISSORS"};
 		Random randNumGenerator = new Random();
-	    int randNum = randNumGenerator.nextInt(3);
-	    
-	    return gameChoices[randNum];
-	    
+		int randNum = randNumGenerator.nextInt(3);
+
+		return gameChoices[randNum];
+
 	}
-	
-	
+
+
 
 }
+

@@ -16,9 +16,10 @@ public class PigLatin {
 	public static String translateToPigLatin(String word) {
 
 		char firstChar = Character.toLowerCase(word.charAt(0));
+
 		if (checkIfVowel(firstChar)) {
 			return (word + "yay");
-		} else if (!checkIfVowel(firstChar) && getIndexOfFirstVowel(word) != -1) {
+		} else if (!(checkIfVowel(firstChar)) && checkIfStringHasVowel(word.toCharArray())) {
 			int vowelIndex = getIndexOfFirstVowel(word);
 			return (word.substring(vowelIndex, word.length()) + word.substring(0, vowelIndex) + "ay");
 		} else {
@@ -29,7 +30,7 @@ public class PigLatin {
 
 	public static int getIndexOfFirstVowel(String input) {
 
-		int[] indexArray = new int[45]; // Fact: The biggest word in English language is 45 characters long.
+		int[] indexArray = new int[45]; // Fact: The longest word in English language is 45 characters long.
 		int count = 0;
 
 		for (int i = 0; i < indexArray.length; i++) {
@@ -67,6 +68,20 @@ public class PigLatin {
 			return true;
 		}
 		return false;
+	}
+
+	public static boolean checkIfStringHasVowel(char[] charArray) {
+
+		for (char firstChar : charArray) {
+			if (firstChar == 'a' || firstChar == 'e' || firstChar == 'i' || firstChar == 'o' || firstChar == 'u'
+					|| firstChar == 'A' || firstChar == 'E' || firstChar == 'I' || firstChar == 'O'
+					|| firstChar == 'U') {
+				return true;
+			}
+
+		}
+		return false;
+
 	}
 
 }
